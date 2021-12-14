@@ -1,3 +1,5 @@
+import "./styles/index.scss";
+
 const patilFamily = {
     members: 4,
     firstName: "Rahul",
