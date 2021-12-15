@@ -1,15 +1,5 @@
-import "./styles/index.scss";
+import { render } from "react-dom"
+import App from "./components/App"
 
-const patilFamily = {
-    members: 4,
-    firstName: "Rahul",
-    lastName: "patil"
-};
+render(<App/>, document.getElementById("root"))
 
-const patilFamilyNewMember = {
-    ...patilFamily,
-    members: 5,
-    fullName: "Rahul D. Patil"
-}
-
-console.log(patilFamilyNewMember)
