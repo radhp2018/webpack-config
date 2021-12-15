@@ -10,12 +10,31 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
  mode: mode,
  target: target,
+ output: {
+    assetModuleFilename: "images/[hash][ext][query]"
+ },
  devtool: "source-map",
  module: {
      rules: [
          {
+             test: /\.(png|jpe?g|gif|svg)$/i,
+             type: "asset",
+             parser : {
+                 dataUrlCondition: {
+                     maxSize: 30* 1024
+                 }
+             }             
+         },
+         {
           test:/\.s?css/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader","postcss-loader", "sass-loader"],
+          use: [
+              {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: 
+                  {
+                    publicPath: ""
+                  },
+              }, "css-loader","postcss-loader", "sass-loader"],
          },
          {
           test: /\.jsx?$/,
